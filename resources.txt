@@ -1,0 +1,19 @@
+Texts: it's ok to read multiple sources with the same material. Having the same material communicated several times gives you new perspectives and you'll learn more.
+- Strang book
+  - sections 1.8, 1.9
+- Wikipedia: https://en.wikipedia.org/wiki/Singular_value_decomposition
+- MIT OCW: https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/positive-definite-matrices-and-applications/singular-value-decomposition/MIT18_06SCF11_Ses3.5sum.pdf
+- https://math.berkeley.edu/~hutching/teach/54-2017/svd-notes.pdf
+- https://www.cs.utexas.edu/users/inderjit/public_papers/HLA_SVD.pdf
+- https://personal.math.vt.edu/embree/cmda3606/chapter6.pdf
+
+Videos
+- https://www.youtube.com/watch?v=gXbThCXjZFM
+- https://www.youtube.com/watch?v=xy3QyyhiuY4
+- https://www.youtube.com/watch?v=mBcLRGuAFUk
+- https://www.youtube.com/watch?v=ZfFf7ECjFrY
+
+Code: mostly Python/numpy resources
+- https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html
+- https://numpy.org/doc/stable/reference/generated/numpy.linalg.svd.html
+- https://numpy.org/doc/stable/reference/routines.linalg.html#module-numpy.linalg
