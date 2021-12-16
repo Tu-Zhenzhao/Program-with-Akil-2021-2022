@@ -2,6 +2,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{xcolor}
+
+\newcommand{\an}[1]{{\leavevmode\color{blue}{#1}}}
 
 \title{Program Study Note}
 \author{Zhenzhao Tu}
@@ -11,9 +14,17 @@
 
 \maketitle
 
+\an{First you should discuss the spectral theorem:
+\section{The spectral theorem for symmetric matrices}
+...
+}
+
+\an{Don't go into the proof yet. First state the SVD. Second, discuss some of its consequences at a high level. Third, prove it.}
 \section{Proof of SVD}
 
 \subsection{Theorem of SVD(Singular Value Decomposition)}
+\an{Are you assuming $n \leq m$?}
+
 First set :
 $A \in$
 ${\rm I\!R}^{m \times n}$,
@@ -59,20 +70,23 @@ By doing a small calculation, we get:
 \begin{equation}
 	x^T A^T A x = <Ax, Ax>
 \end{equation}
+\an{Use $\left\langle \cdot, \cdot \right\rangle$, not $<\cdot,\cdot>$.}
 \\
 From equation 5, we can simply know length of $Ax$  are equal and  greater than $0$:
-\begin{equation}
+\begin{equation}\label{eq:Ax-norm}
 	||Ax||_2^2 \geq 0
 \end{equation}
+{Don't write ``equation 5'', write ``equation \eqref{eq:Ax-norm}'' (see tex source of this comment).}
 \\
-By using \textbf{Spectral Theorem}:
+By using \textbf{Spectral Theorem}: \an{You should have a (sub)section before this explaining the spectral theorem.}
 \begin{equation}
 	K = V \Lambda V^T \in {\rm I\!R}^{n \times n}
 \end{equation}
 \\
-The $\Lambda$ in $K$ is diagonal matrix. Assuming there are $\lambda_1$ to $\lambda_n$, and each $\lambda$ is greater than or equal to $0$. In other case, 
+The $\Lambda$ in $K$ is diagonal matrix. \an{(and what is $V$?)} Assuming there are $\lambda_1$ to $\lambda_n$, and each $\lambda$ is greater than or equal to $0$. \an{Why are you \textit{assuming} that $\lambda_j \geq 0$?} In other case, 
 $\lambda_j$ 
 $\geq 0$.
+\an{What does the previous sentence mean?}
 The order of $\lambda_j$: $\lambda_j \geq \lambda_{j+1}$, 
 $\forall$
 $j = 1, ... ,(n-1)$.
@@ -81,6 +95,7 @@ Now let's define an equation:
 \begin{equation}
 	\sigma_j^2 = \lambda_j     \quad   (\sigma_j = \sqrt{\lambda_j} \geq 0)
 \end{equation}
+\an{You're not defining ``an equation'', you're defining $\sigma_j$.}
 \\
 and
 \\
@@ -91,7 +106,7 @@ and
 $u_j$ and $v_j$ in these two equation satisfied
  $<u_j, u_k> = \delta_{j,k}$ 
  and 
- $<v_j, v_k> = \delta_{j,k}$,
+ $<v_j, v_k> = \delta_{j,k}$, \an{Why is this true?}
  the $\delta$ in here is such this equation:
 \begin{equation}
 		\delta_{j,k}=\left\{
@@ -120,18 +135,18 @@ both sides divided by $\sigma_j$
 \\
 From the last equation, we know two things: $(1)$ $u_j$ is an eigenvector of $AA^T$; $(2)$ $\lambda_j$ is an eigenvalue of $AA^T$ .
 \\[2in]
-Back to the matrix that we defined $Av_j$. Start at $Av_j$, we can define it as:
+Back to the matrix that we defined $Av_j$. \an{I don't understand what this previous sentence is saying: $A$ is given, you didn't define it.} Start at $Av_j$, we can define it as:
 \begin{equation}
 	Av_j = \sigma_j u _j
 \end{equation}
 To make our proof easier, here we define $j = 1 ... r$ $(assume \, \textbf{r=n})$.
 \\[3in]
-Don't forget $U$ and $V$ have orthogonal columns, they can be written in this form:
+Don't forget $U$ and $V$ have orthogonal columns, \an{You never defined $U$.} they can be written in this form:
 \begin{equation}
 	AV = U \Sigma
 \end{equation}
 \\
-Since $V$ is a $n \dots n$ matrix with orthogonal columns, it is an orthogonal  matrix. That means $V^T = V^{-1}$.
+Since $V$ is a $n \times n$ matrix with orthogonal columns, it is an orthogonal  matrix. That means $V^T = V^{-1}$.
 \\
 When we multiply $V^{-1}$ in two sides, we can get our final answer:
 \begin{equation}
@@ -140,7 +155,7 @@ When we multiply $V^{-1}$ in two sides, we can get our final answer:
 
 
 
-\begin{figure}
+\begin{figure}[htbp]
 	%\includegraphics[width=1.0\textwidth]{images/picture.png}
 	\caption{Here is an example of a Figure, with an embedded picture.}
 \end{figure}
