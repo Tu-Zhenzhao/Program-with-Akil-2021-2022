@@ -5,6 +5,7 @@
 \usepackage{xcolor}
 
 \newcommand{\an}[1]{{\leavevmode\color{blue}{#1}}}
+\newcommand{\ex}[1]{{\leavevmode\color{red}{#1}}}
 
 \title{Program Study Note}
 \author{Zhenzhao Tu}
@@ -20,14 +21,13 @@
 }
 
 \an{Don't go into the proof yet. First state the SVD. Second, discuss some of its consequences at a high level. Third, prove it.}
-\section{Proof of SVD}
+\section{Singular Value Decomposition(SVD)}
 
-\subsection{Theorem of SVD(Singular Value Decomposition)}
-\an{Are you assuming $n \leq m$?}
+\subsection{Definition of SVD(Singular Value Decomposition)}
 
 First set :
 $A \in$
-${\rm I\!R}^{m \times n}$,
+${\rm I\!R}^{m \times n}$, assume $n \leq m$,
 $r = rank(A) \leq n$
 \\
 Then : 
@@ -54,6 +54,34 @@ Which express by:
 \begin{equation}
 	A = \sum_{j=1}^{r} \ \sigma_j u_j v_j^T
 \end{equation}
+where:
+\begin{itemize}
+	\item $U$ is an $m \times m$ orthogonal matrix.
+	\item $V$ is an $n \times n$ orthogonal matrix.
+	\item $\Sigma$ is an $m \times n$ matrix whose $i^{th}$ diagonal entry equals the $i^{th}$ singular value $\sigma_i$ for $i$ = 1,...,r. All other entries of $\Sigma$ are zero.
+\end{itemize}
+
+\subsection{Find a SVD}
+Let $A$ be an 
+$m \times n$
+matrix with 
+$\sigma_1 \geq \sigma_2 \geq ... \geq \sigma_1 \geq 0$
+, and let
+$r$
+denote the number of nonzero singular values
+$A$.
+\vspace{5mm}
+
+Let 
+$v_1,...,v_n$
+be an orthonormal basis of
+${\rm I\!R}^{m \times n}$,
+where
+$v_i$
+is an eigenvector of 
+$A^TA$
+with eigenvalue
+$\sigma^2_i$.
 
 \subsection{Proof}
 At first, let's set:
