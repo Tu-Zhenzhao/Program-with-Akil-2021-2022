@@ -294,6 +294,22 @@ I add this section is because it will help me to understand SVD in a new way. Ac
 \[ Integral: Ax(s) = \int_{0}^{s} x(t) \,dt\] 
 \[Derivative: Dx(t) = \frac{dx}{dt}.\]
 By the Fundamental Theorem of Calculus, $D$ is the inverse of $A$. More exactly $D$ is a left inverse of $A$. Derivative of integral equals original function, so $DA = I$. We call this as \textbf{\textit{$D$ is the pseudoinverse of $A$}}.
+\\
+Assuming $u$ is $sin(kt)$ and $v$ is $cos(kt)$ in $Av = \sigma v$, then we have:
+\[A(coskt) = \frac{1}{k}(sinkt)\]
+\[D(sinkt) = k(coskt)\]
+The input and output spaces of $A$ and $D$ are very like ${\rm I\!R}^{n}$ and ${\rm I\!R}^{m}$ in a $m$ by $n$ matrix.
+
+We know the property of the SVD is that the $v$ and $u$ 's are orthogonal. That also working in those function. The inner product of functions $x_1$ and $x_2$ is the integral of $x_1(t)x_2(t)$. They are represented by:
+\[v_k^{T}v_j =  \int_{0}^{2 \pi} (coskt)(cosjk) \,dt = 0\]
+\[u_k^{T}u_j =  \int_{0}^{2 \pi} (sinkt)(sinjk) \,dt = 0\]
+
+
+
+
+
+
+
 
 
 
