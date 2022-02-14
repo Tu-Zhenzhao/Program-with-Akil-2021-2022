@@ -16,10 +16,22 @@
 
 \maketitle
 
-\an{First you should discuss the spectral theorem:
 \section{The spectral theorem for symmetric matrices}
-...
-}
+Suppose $A \in$ 
+${\rm I\!R}^{n \times n}$ is symmetric. Then
+\\
+\begin{enumerate}
+	\item every eigenvalue $\lambda$ of $A$ is a real number and there exists a (real) eigenvector ${u \in \rm I\!R}^{n}$ corresponding to $\lambda$:  $Au=\lambda u$;
+	\item eigenvectors corresponding to distinct eigenvalues are necessarily orthogonal: 
+	\[Au^{(1)} = \lambda_1 u^{(1)} , Au^{(2)} = \lambda_2 u^{(2)}, \lambda_1 \neq \lambda_2, u^{(1)}u^{(2)} = 0.\]
+	\item there exists a diagonal matrix  $D\in{\bf {\rm R}}^{n\times n}$ and an orthogonal matrix  $U\in{\bf {\rm R}}^{n\times n}$ such that $A=UDU^T$. The diagonal entries of $D$ are the eigenvalues of $A$ and the columns of $U$ are the corresponding eigenvectors: 
+	\[D = diag(\lambda_1, \lambda_2, \lambda_3, ..., \lambda_n),\]
+	\[U = [u^{(1)} | u^{(1)} | u^{(2)} | ... | u^{(n)}],\]
+	\[Au^{(n)} = \lambda_n u^{(n)}, i = 1,2,3,...,n.\]
+\end{enumerate}
+An orthogonal matrix $U$ satisfies, by definition, $U^T=U^{-1}$, which means that the columns of $U$ are orthonormal (that is, any two of them are orthogonal and each has norm one). The expression $A=UDU^T$ of a symmetric matrix in terms of its eigenvalues and eigenvectors is referred to as the \textbf{spectral decomposition} of $A$. 
+\\
+The spectral theorem implies that there is a change of variables which transforms A into a diagonal matrix.
 
 \an{Don't go into the proof yet. First state the SVD. Second, discuss some of its consequences at a high level. Third, prove it.}
 \section{Singular Value Decomposition(SVD)}
@@ -196,45 +208,40 @@ Then, $K$ can be multiply by $x^T$ and $x$:
 \\
 By doing a small calculation, we get:
 \begin{equation}
-	x^T A^T A x = <Ax, Ax>
+	x^T A^T A x = \left\langle Ax, Ax \right\rangle
 \end{equation}
-\an{Use $\left\langle \cdot, \cdot \right\rangle$, not $<\cdot,\cdot>$.}
 \\
-From equation 5, we can simply know length of $Ax$  are equal and  greater than $0$:
+From equation (5), we can simply know length of $Ax$  are equal and  greater than $0$:
 \begin{equation}\label{eq:Ax-norm}
 	||Ax||_2^2 \geq 0
 \end{equation}
-{Don't write ``equation 5'', write ``equation \eqref{eq:Ax-norm}'' (see tex source of this comment).}
-\\
-By using \textbf{Spectral Theorem}: \an{You should have a (sub)section before this explaining the spectral theorem.}
+
+By using \textbf{Spectral Theorem}: 
 \begin{equation}
 	K = V \Lambda V^T \in {\rm I\!R}^{n \times n}
 \end{equation}
 \\
-The $\Lambda$ in $K$ is diagonal matrix. \an{(and what is $V$?)} Assuming there are $\lambda_1$ to $\lambda_n$, and each $\lambda$ is greater than or equal to $0$. \an{Why are you \textit{assuming} that $\lambda_j \geq 0$?} In other case, 
-$\lambda_j$ 
-$\geq 0$.
-\an{What does the previous sentence mean?}
-The order of $\lambda_j$: $\lambda_j \geq \lambda_{j+1}$, 
-$\forall$
-$j = 1, ... ,(n-1)$.
-\\
+The $\Lambda$ in $K$ is diagonal matrix, where $V$ is an orthonormal matrix whose columns are the eigenvectors of $A^TA$ and where $r \leq n$ and $r = rank(A) = rank(A^TA) $. Now we define a quantity $\sigma_i$ (the \textit{singular value}) such this equation with $\lambda_i$:
 Now let's define an equation:
 \begin{equation}
 	\sigma_j^2 = \lambda_j     \quad   (\sigma_j = \sqrt{\lambda_j} \geq 0)
 \end{equation}
-\an{You're not defining ``an equation'', you're defining $\sigma_j$.}
-\\
-and
-\\
+ Assuming there are $\lambda_1$ to $\lambda_n$, and each $\lambda$ is greater than or equal to $0$. The order of $\lambda_j$: $\lambda_j \geq \lambda_{j+1}$, 
+$\forall$
+$j = 1, ... ,(n-1)$.
+For the $i$-th eigenvector-eigenvalue pair, we have
+\[A^TAv_{i} = (\sigma_i)^2v_i.\]
+It is easy to know that  $v_i$ is the eigenvector of $A^TA$.
+For now, assume that we have a full-rank matrix ($\sigma_i \geq 0$ for all $i$). Define a new matrix $U$ is an orthonormal matrixr whose columns $u_i$ such that
 \begin{equation}
 	u_j = \frac{A v_j}{\sigma_j} \qquad u_j \in {\rm I\!R}^{m} \mbox{and}  v_j \in {\rm I\!R}^{n}
 \end{equation}
 \\
+Since $u_i$ and $v_i$ are orthonormal columns of $U$ and $V$,
 $u_j$ and $v_j$ in these two equation satisfied
- $<u_j, u_k> = \delta_{j,k}$ 
+ $\left\langle u_j, u_k \right\rangle = \delta_{j,k}$ 
  and 
- $<v_j, v_k> = \delta_{j,k}$, \an{Why is this true?}
+ $\left\langle v_j, v_k \right\rangle = \delta_{j,k}$, 
  the $\delta$ in here is such this equation:
 \begin{equation}
 		\delta_{j,k}=\left\{
@@ -262,14 +269,14 @@ both sides divided by $\sigma_j$
 \end{align*}
 \\
 From the last equation, we know two things: $(1)$ $u_j$ is an eigenvector of $AA^T$; $(2)$ $\lambda_j$ is an eigenvalue of $AA^T$ .
-\\[2in]
-Back to the matrix that we defined $Av_j$. \an{I don't understand what this previous sentence is saying: $A$ is given, you didn't define it.} Start at $Av_j$, we can define it as:
+\\
+Start at $Av_j$, we can re-write it as:
 \begin{equation}
 	Av_j = \sigma_j u _j
 \end{equation}
 To make our proof easier, here we define $j = 1 ... r$ $(assume \, \textbf{r=n})$.
-\\[3in]
-Don't forget $U$ and $V$ have orthogonal columns, \an{You never defined $U$.} they can be written in this form:
+\\
+Don't forget $U$ and $V$ have orthogonal columns, they can be written in this form:
 \begin{equation}
 	AV = U \Sigma
 \end{equation}
@@ -281,17 +288,12 @@ When we multiply $V^{-1}$ in two sides, we can get our final answer:
 	A = U \Sigma V^T 
 \end{equation} 
 
-
-
-\begin{figure}[htbp]
-	%\includegraphics[width=1.0\textwidth]{images/picture.png}
-	\caption{Here is an example of a Figure, with an embedded picture.}
-\end{figure}
-
-
-
-
-
+\newpage
+\section{The SVD for Derivatives and Integrals}
+I add this section is because it will help me to understand SVD in a new way. According to textbook,  this is the clearest example of the SVD. At first we can think $A$ as an \textit{operator} instead of matrix. Now we can write down integral and derivative of function in terms of A and operator D:
+\[ Integral: Ax(s) = \int_{0}^{s} x(t) \,dt\] 
+\[Derivative: Dx(t) = \frac{dx}{dt}.\]
+By the Fundamental Theorem of Calculus, $D$ is the inverse of $A$. More exactly $D$ is a left inverse of $A$. Derivative of integral equals original function, so $DA = I$. We call this as \textbf{\textit{$D$ is the pseudoinverse of $A$}}.
 
 
 
