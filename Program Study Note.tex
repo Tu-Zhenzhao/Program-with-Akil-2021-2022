@@ -16,6 +16,7 @@
 
 \maketitle
 
+
 \section{The spectral theorem for symmetric matrices}
 Suppose $A \in$ 
 ${\rm I\!R}^{n \times n}$ is symmetric. Then
@@ -24,7 +25,8 @@ ${\rm I\!R}^{n \times n}$ is symmetric. Then
 	\item every eigenvalue $\lambda$ of $A$ is a real number and there exists a (real) eigenvector ${u \in \rm I\!R}^{n}$ corresponding to $\lambda$:  $Au=\lambda u$;
 	\item eigenvectors corresponding to distinct eigenvalues are necessarily orthogonal: 
 	\[Au^{(1)} = \lambda_1 u^{(1)} , Au^{(2)} = \lambda_2 u^{(2)}, \lambda_1 \neq \lambda_2, u^{(1)}u^{(2)} = 0.\]
-	\item there exists a diagonal matrix  $D\in{\bf {\rm R}}^{n\times n}$ and an orthogonal matrix  $U\in{\bf {\rm R}}^{n\times n}$ such that $A=UDU^T$. The diagonal entries of $D$ are the eigenvalues of $A$ and the columns of $U$ are the corresponding eigenvectors: 
+	\item there exists a diagonal matrix  $D\in{\bf {\rm R}}^{n\times n}$ and an orthogonal matrix  $U\in{\bf {\rm R}}^{n\times n}$ such that $A=UDU^T$. The diagonal 
+		entries of $D$ are the eigenvalues of $A$ and the columns of $U$ are the corresponding eigenvectors: 
 	\[D = diag(\lambda_1, \lambda_2, \lambda_3, ..., \lambda_n),\]
 	\[U = [u^{(1)} | u^{(1)} | u^{(2)} | ... | u^{(n)}],\]
 	\[Au^{(n)} = \lambda_n u^{(n)}, i = 1,2,3,...,n.\]
@@ -90,8 +92,7 @@ $v_1,...,v_n$
 be an orthogonal basis of
 ${\rm I\!R}^{m \times n}$,
 where
-$v_i$
-is an eigenvector of 
+$v_i$ is an eigenvector of 
 $A^TA$
 with eigenvalue
 $\sigma^2_i$.
@@ -289,6 +290,7 @@ When we multiply $V^{-1}$ in two sides, we can get our final answer:
 \end{equation} 
 
 \newpage
+e
 \section{The SVD for Derivatives and Integrals}
 I add this section is because it will help me to understand SVD in a new way. According to textbook,  this is the clearest example of the SVD. At first we can think $A$ as an \textit{operator} instead of matrix. Now we can write down integral and derivative of function in terms of A and operator D:
 \[ Integral: Ax(s) = \int_{0}^{s} x(t) \,dt\] 
@@ -304,9 +306,16 @@ We know the property of the SVD is that the $v$ and $u$ 's are orthogonal. That 
 \[v_k^{T}v_j =  \int_{0}^{2 \pi} (coskt)(cosjk) \,dt = 0\]
 \[u_k^{T}u_j =  \int_{0}^{2 \pi} (sinkt)(sinjk) \,dt = 0\]
 
+\section{Pricipal Component Analysis}
 
-
-
+\subsection{Steps of PCA}
+\begin{enumerate}
+								\item Standardize the range of continuous initial variables
+								\item Compute the covariance matrix to identify correlations
+								\item Compute the eigenvectors and eigenvalues of the covariance matrix to identify the principal components
+								\item Create a feature vector to decide which principal components to keep
+								\item Recast the data along the principal components axes
+\end{enumerate}
 
 
 
