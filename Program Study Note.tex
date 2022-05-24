@@ -3,7 +3,18 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{xcolor}
+\usepackage{hyperref}
 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+    
+\urlstyle{same}
 
 \newcommand{\an}[1]{{\leavevmode\color{blue}{#1}}}
 \newcommand{\ex}[1]{{\leavevmode\color{red}{#1}}}
@@ -11,6 +22,7 @@
 \title{Program Study Note}
 \author{Zhenzhao Tu}
 \date{Nov 30 2021}
+
 
 \begin{document}
 
@@ -308,16 +320,53 @@ We know the property of the SVD is that the $v$ and $u$ 's are orthogonal. That 
 
 \section{Pricipal Component Analysis}
 
-\subsection{Steps of PCA}
+i\subsection{Steps of PCA}
 \begin{enumerate}
 								\item Standardize the range of continuous initial variables
 								\item Compute the covariance matrix to identify correlations
+
 								\item Compute the eigenvectors and eigenvalues of the covariance matrix to identify the principal components
+								
 								\item Create a feature vector to decide which principal components to keep
 								\item Recast the data along the principal components axes
+
 \end{enumerate}
 
+\subsection{Idea of PCA}
 
+\subsubsection{Problem} Many datasets have too many features to be able to explore or understand in a reasonable way. Its difficult to even make a reasonable plot for a high-dimensional dataset.
+
+\subsubsection{Idea} In \href{https://en.wikipedia.org/wiki/Principal_component_analysis}{Principal Component Analysis (PCA)}, we find a small number of new features, which are linear combinations of the old features, that 'explain' most of the variance in the data. The principal component directions are the directions in feature space in which the data is the most variable. 
+
+Before we get into the mathematical description of Principal Component Analysis (PCA), we can gain a lot of intuition by taking a look at \href{http://setosa.io/ev/principal-component-analysis/}{this visual overview} by Victor Powell.
+
+\subsubsection{Mathematical description} Let the $p$ features in our dataset be $x = (x_1, x_2, \ldots x_p)$. We define a new feature, the \textit{first principal component score}, by 
+$$
+z_1 = \phi_{1,1} x_1 + \phi_{2,1} x_2 + \cdots + \phi_{p,1} x_p = \phi_1^t x 
+$$
+Here, the coefficients $\phi_{j,1}$ are the \textit{loadings} of the $j$-th feature on the first principal component. The vector $\phi_1 = (\phi_{1,1}, \phi_{2,1},\cdots, \phi_{p,1})$ is called the \textit{loadings vector} for the first principal component. 
+
+We want to find the loadings so that $z_1$ has maximal sample variance. 
+
+Let $X$ be the $n\times p$ matrix where $X_{i,j}$ is the $j$-th feature for item $i$ in the dataset. $X$ is just the collection of the data in a matrix. 
+
+\subsubsection{Important} Assume each of the variables has been normalized to have mean zero, *i.e.*, the columns of $X$ should have zero mean. 
+
+A short calculation shows that the sample variance of $z_1$ is then given by 
+$$
+Var(z_1) = \frac{1}{n} \sum_{i=1}^n \left( \sum_{j=1}^p \phi_{j,1} X_{i,j} \right)^2. 
+$$
+The variance can be arbitrarily large if the $\phi_{j,1}$ are allowed to be arbitrarily large. We constrain the $\phi_{j,1}$ to satisfy $\sum_{j=1}^p \phi_{j,1}^2 = 1$. In vector notation, this can be written $\| \phi_1 \| = 1$.
+
+Putting this together, the first principal component is defined by $z_1 = \phi_1^t x$ where $\phi_1$ is the solution to the optimization problem 
+\begin{align*}
+\max_{\phi_1} \quad & \textrm{Var}(z_1) \\
+\text{subject to} \quad & \| \phi_1\|^2 = 1. 
+\end{align*}
+Using linear algebra, it can be shown that $\phi_1$ is exactly the eigenvector corresponding to the largest eigenvalue of the *covariance matrix*, $X^tX$. 
+
+We similarly define the second principal direction to be the linear combination of the features, 
+$z_2 = \phi_2^t x$ with the largest variance, subject to the additional constraint that $z_2$ be uncorrelated with $z_1$. This is equivalent to $\phi_1^t \phi_2 = 0$. This corresponds to taking $\phi_2$ to be the eigenvector corresponding to the second largest eigenvalue of $X^tX$. Higher principal directions are defined analogously. 
 
 
 
