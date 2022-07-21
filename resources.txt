@@ -5,7 +5,7 @@ Texts: it's ok to read multiple sources with the same material. Having the same 
 - MIT OCW: https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/positive-definite-matrices-and-applications/singular-value-decomposition/MIT18_06SCF11_Ses3.5sum.pdf
 - https://math.berkeley.edu/~hutching/teach/54-2017/svd-notes.pdf
 - https://www.cs.utexas.edu/users/inderjit/public_papers/HLA_SVD.pdf
-- https://personal.math.vt.edu/embree/cmda3606/chapter6.pdf
+- https://personal.math.vt.edu/embree/cmda3606/chapter6.pdf	
 
 Videos
 - https://www.youtube.com/watch?v=gXbThCXjZFM
